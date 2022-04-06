@@ -20,9 +20,13 @@ const Movies = (props) => {
 
   return (
     <div>
-      <h2>MOVIES</h2>
+      {props.movieState.movies.map((movie) => (
+        <ul key={movie.id}>
+          <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+        </ul>
+      ))}
     </div>
   )
 }
 
-export default Movies
+export default connect(maptStateToProps, mapDispatchToProps)(Movies)
